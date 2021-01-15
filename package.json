@@ -1,29 +1,26 @@
 {
-  "name": "using-pre-built-react-components",
+  "name": "parchi",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "main": "src/index.js",
-  "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-scripts": "3.2.0"
-  },
-  "devDependencies": {
-    "typescript": "3.3.3"
-  },
+  "description": "Simple App to Keep Notes",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "node backend/server.js",
+    "client": "npm start --prefix frontend",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pratikchaubey05/parchi.git"
+  },
+  "author": "PRATIK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pratikchaubey05/parchi/issues"
+  },
+  "homepage": "https://github.com/pratikchaubey05/parchi#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
 }
