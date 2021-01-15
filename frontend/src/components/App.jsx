@@ -5,21 +5,25 @@ import Note from "./Note";
 import CreateArea from "./CreateArea";
 
 function App() {
-  const [notes, setNotes] = useState([]);
 
-  function addNote(newNote) {
-    setNotes(prevNotes => {
-      return [...prevNotes, newNote];
-    });
-  }
+  const [notes, setNotes] = useState(localStorage.getItem("parchiNotes") ? [...JSON.parse(localStorage.getItem("parchiNotes"))] : []);
 
-  function deleteNote(id) {
-    setNotes(prevNotes => {
-      return prevNotes.filter((noteItem, index) => {
-        return index !== id;
+  localStorage.setItem("parchiNotes", JSON.stringify(notes)) ;
+
+    function addNote(newNote) {
+      setNotes(prevNotes => {
+        return [...prevNotes, newNote];
       });
-    });
-  }
+      
+    }
+    function deleteNote(id) {
+      setNotes(prevNotes => {
+        return prevNotes.filter((noteItem, index) => {
+          return index !== id;
+        });
+      });
+      localStorage.setItem("parchiNotes", JSON.stringify(notes)) ;
+    }
 
   return (
     <div>
