@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import Fab from '@material-ui/core/Fab';
 import Zoom from '@material-ui/core/Zoom' ;
+import Message from "./Message.js" ;
 
 function CreateArea(props) {
 
   const [isExpanded, setExpanded] = useState(false); 
+  const [message, setMessage] = useState("");
   const [note, setNote] = useState({
     title: "",
     content: ""
@@ -21,13 +23,18 @@ function CreateArea(props) {
       };
     });
   }
-
   function submitNote(event) {
-    props.onAdd(note);
-    setNote({
-      title: "",
-      content: ""
-    });
+    if(!note.title || !note.content){
+      setMessage("Note is not complete. Kindly provide both Title and Note text.")
+    }else{
+      setMessage("");
+      props.onAdd(note);
+      setNote({
+        title: "",
+        content: ""
+      });
+    }
+
     event.preventDefault();
   }
 
@@ -57,7 +64,7 @@ function CreateArea(props) {
           <AddCircleIcon />
           </Fab>
         </Zoom>
-        
+        {message && <Message variant="danger">{message}</Message>}
       </form>
     </div>
   );
